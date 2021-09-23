@@ -25,7 +25,7 @@ jobs:
                 name: create app configuration
                 command: | 
                     if [ "${CIRCLE_BRANCH}" == "stage" ]; then
-                        echo "export const ENV = { BASE_API: 'https://tatras-ux-uat-api.metswift.live', WEATHER_API: 'https://tatras-ux-uat-weather.metswift.live/api/v1', JIRA_TOKEN: '"${JIRA_UAT_TOKEN}"'}; export const SETTINGS = {BUY: true, STATION: false, SEARCH_LOCATION_FULL_WIDTH_VALUE: 500};" > src/app/app.config.ts
+                        echo "import { HttpClient, HttpHeaders } from '@angular/common/http'; export class IAppConfig {apiEndpoint: string;HTTP_OPTIONS:any;};export const AppConfig: IAppConfig = {apiEndpoint: 'http://localhost:2000/',HTTP_OPTIONS : { headers : new HttpHeaders({'Content-Type':  'application/json','Access-Control-Allow-Credentials' : 'true','Access-Control-Allow-Origin': '*','Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS','Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With','mode': 'no-cors'})}};" > src/app/app.config.ts
                     fi
             - run: 
                 name: build app
