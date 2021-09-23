@@ -1,0 +1,48 @@
+
+version: 2.1
+jobs:
+    build: 
+        working_directory: ~/rev2grow
+        docker:
+            - image: circleci/node:14.16.1
+        steps:
+            - checkout 
+            - run:
+                name: install ssh
+                command: |
+                    sudo apt-get update
+                    sudo apt-get install openssh-server
+            - run:
+                name: node module cleanup
+                command: rm -rf ./node_modules/
+            - run:
+                name: node cache clean
+                command: npm cache clean --force
+            - run: 
+                name: install project packages and dependencies
+                command: npm install
+            -  run:
+                name: create app configuration
+                command: | 
+                    if [ "${CIRCLE_BRANCH}" == "uat" ]; then
+                        echo "export const ENV = { BASE_API: 'https://tatras-ux-uat-api.metswift.live', WEATHER_API: 'https://tatras-ux-uat-weather.metswift.live/api/v1', JIRA_TOKEN: '"${JIRA_UAT_TOKEN}"'}; export const SETTINGS = {BUY: true, STATION: false, SEARCH_LOCATION_FULL_WIDTH_VALUE: 500};" > src/app/app.config.ts
+                    fi
+            - run: 
+                name: build app
+                command: npm run build --prod --aot
+            - run:
+                name: deploy
+                command: |
+                    if [ "${CIRCLE_BRANCH}" == "uat" ]; then
+                        scp -oStrictHostKeyChecking=no -r ./dist/metswift/* ${DEPLOY_UAT_USER}@${DEPLOY_UAT_SERVER}:${DEPLOY_UAT_DIR}
+                    fi 
+workflows:
+    version: 2
+    build_and_deploy:
+        jobs:
+            - build:
+                filters:
+                    branches:
+                        only:
+                            - uat
+        
