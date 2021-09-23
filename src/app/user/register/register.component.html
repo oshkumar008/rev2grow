@@ -1,1 +1,40 @@
-<p>register works!</p>
+<app-breadcrum [name]="page" (checkthepage)="getPageName($event)"></app-breadcrum>
+  <div class="formWrapper">
+
+    <div class="loginForm">
+        <h5>Create Your Account</h5>     
+        <h3 *ngIf="errorMessage" style="color: #f01;">{{errorMessage}}</h3>        
+      <div class="formGroup">
+        <form [formGroup]="registerForm" (ngSubmit)="submitUser()">
+                <div class="form-group">
+                    <input type="text" class="frm-ctrl" placeholder="Enter Username" (blur)="checkusername()" formControlName="username">
+                    <div class="CheckUsername" *ngIf="existusername">{{existusername}}</div>
+                </div>
+                    <div class="form-group">
+            <input type="text" class="frm-ctrl" placeholder="Enter Firstname"  formControlName="fname">
+                    </div>
+                    <div class="form-group">
+            <input type="text" class="frm-ctrl" placeholder="Enter Lastname" formControlName="lname">
+                    </div>
+                    <div class="form-group">
+            <input type="text" class="frm-ctrl" placeholder="Enter Phone Number" formControlName="mobile" >
+            <div class="warning-block" *ngIf="registerForm.controls['mobile'].touched && !registerForm.controls['mobile'].valid">Please enter your phone number</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="frm-ctrl" placeholder="Enter Email" formControlName="email">
+                    <div class="warning-block" *ngIf="!registerForm.controls['email'].valid && registerForm.controls['email'].touched">Please enter your E-mail address</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="frm-ctrl" placeholder="Password" formControlName="password" />
+                    </div>
+                    <!-- <div class="form-group pull-right">
+                        <a class="forget" href="#">Forgot Password?</a>
+                    </div> -->
+                    <button class="custom-btn" type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+        </form>
+      </div>
+      <!-- <div class="form-group SignUplink">
+        <a href="#">Don't have an account? Sign Up Now</a>
+      </div> -->
+    </div>
+  </div>

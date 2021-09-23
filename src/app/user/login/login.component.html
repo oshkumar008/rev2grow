@@ -1,2 +1,77 @@
-<p>login works!</p>
-<mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
+
+<app-breadcrum [name]="page" (checkthepage)="getPageName($event)"></app-breadcrum>
+<div class="col-sm-6 text-center">
+    <h5 [appMessagebox] [appHighlight]='headingcolor' >{{arr}}</h5>
+    <!-- <h3>Binding innerHTML</h3>
+    <p class="e2e-inner-html-bound" [innerHTML]="'Template <script>alert(0wned)</script> <b>Syntax</b>'"></p> -->
+    <!-- <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider> -->
+    <h4 *ngIf="ErrorMassage" style="color: #f01;">{{ErrorMassage}}</h4>
+    <div class="socialButtons">
+    <div style="cursor: pointer;" (click)="signInWithGoogle()" class="googleplus">
+            <img src="assets/images/googleico.png" alt="login">
+        </div>
+        <div style="cursor: pointer;" class="facebook" (click)="signInWithFB()">
+            <img src="assets/images/facebook.png" alt="login">
+        </div>
+    </div>
+    <div class="or">OR </div>
+    <div class="formGroup" appMessagebox>
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <!-- <div class="form-group">
+                <input type="text" name="" class="form-control" placeholder="Enter Email" formControlName="email">
+                <div class="warning-block" *ngIf="myForm.email.errors && myForm.email.errors.required && myForm.email.touched">Please enter your E-mail address</div>
+                <div class="warning-block" *ngIf="myForm.email.errors && myForm.email.errors.pattern && myForm.email.touched">Please enter valid E-mail address</div>
+                    
+            </div> -->
+                
+            <!-- <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password" />
+                <div class="warning-block" *ngIf="myForm.password.errors && myForm.password.errors.required && myForm.email.touched">Please enter your password</div>
+            </div> -->
+            <div class="form-group">
+                <p>
+                    <mat-form-field appearance="outline" class="form_field">
+                        <mat-label>Email</mat-label>
+                            <input type="email" class="form-control" matInput formControlName="email"
+                                placeholder="Ex. pat@example.com">
+                            <mat-hint>Errors appear instantly!</mat-hint>
+                            <mat-error *ngIf="myForm.email.errors && myForm.email.errors.pattern && myForm.email.touched">
+                            Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="myForm.email.errors && myForm.email.errors.required && myForm.email.touched">
+                            Email is <strong>required</strong>
+                            </mat-error>
+                    </mat-form-field>
+    
+                </p>
+                <p>
+                    <mat-form-field appearance="outline" class="form_field">
+                        <mat-label>Password</mat-label>
+                            <input type="password" class="form-control" placeholder="Password" matInput formControlName="password" />
+                            <mat-hint>Password should contain special, Number, caps !</mat-hint>
+                            <!-- <mat-error *ngIf="myForm.email.errors && myForm.email.errors.pattern && myForm.email.touched">
+                            Please enter a valid email address
+                            </mat-error> -->
+                            <mat-error *ngIf="myForm.password.errors && myForm.password.errors.required && myForm.password.touched">
+                            Password is <strong>required</strong>
+                            </mat-error>
+                    </mat-form-field>
+                </p>
+                
+            </div>    
+                
+            <div class="form-group pull-right">
+                <a class="forget" [routerLink]="['/forgetpassword']">Forgot Password?</a>
+            </div>
+
+            <button class="" type="submit" mat-button color="primary">Sign In</button>
+        </form>
+    </div>
+    <div class="form-group SignUplink">
+        <a [routerLink]="'/users/registration'">Don't have an account? Sign Up Now</a>
+    </div>
+</div>
+<!-- <mat-divider></mat-divider> -->
+
+
+

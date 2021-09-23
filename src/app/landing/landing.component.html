@@ -1,0 +1,139 @@
+ <!-- Resources -->
+
+ <div class="card-container" *ngIf="!all">
+   <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+
+     <span>Learn Angular</span>
+
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+
+   <a class="card" target="_blank" rel="noopener" href="https://angular.io/cli">
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+
+     <span>CLI Documentation</span>
+
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+   </a>
+
+   <a class="card" target="_blank" rel="noopener" href="https://blog.angular.io/">
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
+
+     <span>Angular Blog</span>
+
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+   </a>
+
+ </div>
+
+ <!-- Next Steps -->
+ <h2 [ngStyle] = "{'color':'#888888'}">Next Steps( {{searchstr}} )</h2>
+ <p [ngStyle]="{'color': (!all)?'#888888':'#000000','font-weight':(!all)?'bold':''}"> What do you want to do next for grow?</p>
+
+ <input type="hidden" #selection>
+
+ <div class="card-container">
+   <div class="card card-small" (click)="selection.value = 'introspect'" tabindex="0">
+       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+     <span>Intospect</span>
+   </div>
+
+   <div class="card card-small" (click)="selection.value = 'analyze'" tabindex="0">
+       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+     <span>Analyze</span>
+   </div>
+
+   <div class="card card-small" (click)="selection.value = 'implement'" tabindex="0">
+       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+     <span>Implement</span>
+   </div>
+
+   <div class="card card-small" (click)="selection.value = 'review'" tabindex="0">
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+     <span>Review Output</span>
+   </div>
+
+   <div class="card card-small" (click)="selection.value = 'change'" tabindex="0">
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+     <span>Change the way to improve</span>
+   </div>
+
+   <div class="card card-small" (click)="selection.value = 'addremove'" tabindex="0">
+     <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+     <span>Add & Remove</span>
+   </div>
+ </div>
+
+ <!-- Terminal -->
+  <!-- <div class="terminal" [ngSwitch]="selection.value">
+      <pre *ngSwitchDefault>ng generate component xyz</pre>
+      <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
+      <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
+      <pre *ngSwitchCase="'dependency'">ng add _____</pre>
+      <pre *ngSwitchCase="'test'">ng test</pre>
+      <pre *ngSwitchCase="'build'">ng build --prod</pre>
+  </div> -->
+  <div class="terminal" [ngSwitch]="selection.value">
+  <pre *ngSwitchDefault>
+    <div class="descript">
+      <p><span>What do you hope to accomplish by bringing user representations into your organization? Based on the results of your <span class="topic-highlight">organizational introspection</span>, why do you think you need personas?</span></p>
+      <dl class="article-list">
+        <dt>•</dt><dd><p id="B9780125662512500046-para349"><em>Enhance focus:</em> You need to reduce or expand your possible target/ audience.</p></dd>
+        <dt>•</dt><dd><p id="B9780125662512500046-para350"><em>Guide direction and decision making:</em> You need to simply articulate user requirements and needs to help determine product goals and features.</p></dd>
+        <dt>•</dt><dd><p id="B9780125662512500046-para351"><em>Promote discovery and understanding:</em> You need help in uncovering pain points, design opportunities, and hidden truths about your users and customers.</p></dd>
+        <dt>•</dt><dd><p id="B9780125662512500046-para352"><em>Facilitate feature design:</em> You need to structure design and development activities around user needs and how they should influence design solutions, product flow, and technical implementation.</p></dd>
+      </dl>
+    </div>
+  </pre>  
+  <pre *ngSwitchCase="'analyze'">
+    <div class="descript">
+      <p><span>What do you hope to accomplish by bringing user representations into your organization? Based on the results of your <span class="topic-highlight">organizational introspection</span>, why do you think you need personas?</span></p>
+      <dl class="article-list">
+        <dt>•</dt><dd><p id="B9780125662512500046-para353"><em>Inspire innovation:</em> You need to find new ways to inspire creative “outside the box” thinking when imagining or exploring solutions.</p></dd>
+        <dt>•</dt><dd><p id="B9780125662512500046-para354"><em>Promote awareness and empathy:</em> You need to teach your team more generally about their users and customers and engender a sense of care and concern for their reality and needs.</p></dd>
+        <dt>•</dt><dd><p id="B9780125662512500046-para355"><em>Enhance community:</em> You want to create a common, shared goal and promote an idea that your entire team can rally around. You want to create a common language and shared understanding that extends throughout your team and across other teams.</p></dd>
+        <dt>•</dt><dd><p id="B9780125662512500046-para356"><em>Overhaul the development process:</em> You want to completely revamp your development process from end to end to focus on UCD.</p></dd>
+      </dl>
+    </div>
+  </pre>
+      <pre *ngSwitchCase="'implement'">
+        <div class="descript">
+          <p><span>What do you hope to accomplish by bringing user representations into your organization? Based on the results of your <span class="topic-highlight">organizational introspection</span>, why do you think you need personas?</span></p>
+          <dl class="article-list">
+            <dt>•</dt><dd><p id="B9780125662512500046-para353"><em>Inspire innovation:</em> You need to find new ways to inspire creative “outside the box” thinking when imagining or exploring solutions.</p></dd>
+           </dl>
+        </div>
+      </pre>
+      <pre *ngSwitchCase="'review'">
+        <div class="descript">
+          <p><span>What do you hope to accomplish by bringing user representations into your organization? Based on the results of your <span class="topic-highlight">organizational introspection</span>, why do you think you need personas?</span></p>
+          <dl class="article-list">
+            <dt>•</dt><dd><p id="B9780125662512500046-para354"><em>Promote awareness and empathy:</em> You need to teach your team more generally about their users and customers and engender a sense of care and concern for their reality and needs.</p></dd>
+           </dl>
+        </div>
+      </pre>
+      <pre *ngSwitchCase="'change'">
+        <div class="descript">
+          <p><span>What do you hope to accomplish by bringing user representations into your organization? Based on the results of your <span class="topic-highlight">organizational introspection</span>, why do you think you need personas?</span></p>
+          <dl class="article-list">
+            <dt>•</dt><dd><p id="B9780125662512500046-para356"><em>Overhaul the development process:</em> You want to completely revamp your development process from end to end to focus on UCD.</p></dd>
+          </dl>
+        </div>
+      </pre>
+      <pre *ngSwitchCase="'addremove'">
+        <div class="descript">
+          <p><span>What do you hope to accomplish by bringing user representations into your organization? Based on the results of your <span class="topic-highlight">organizational introspection</span>, why do you think you need personas?</span></p>
+          <dl class="article-list">
+            <dt>•</dt><dd><p id="B9780125662512500046-para355"><em>Enhance community:</em> You want to create a common, shared goal and promote an idea that your entire team can rally around. You want to create a common language and shared understanding that extends throughout your team and across other teams.</p></dd>
+           </dl>
+        </div>
+      </pre>
+
+    </div>
+

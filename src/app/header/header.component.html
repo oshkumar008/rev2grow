@@ -1,0 +1,56 @@
+<div class="toolbar" role="banner">
+      <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/CompeteEveryDay" title="Twitter">
+        <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+          <rect width="400" height="400" fill="none"/>
+          <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
+        </svg>
+      </a>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a routerLink="">
+        <img width="70" alt="Rev2Grow Logo" src="assets/coreimg/logo.jpeg"/>
+      </a> 
+    
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+          <li class="nav-item" >
+            <a mat-button aria-current="page" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" routerLink="/home">Home</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}">
+            <a  mat-button href="#">Link</a>
+          </li>
+          
+          <li *ngIf="!(userlogin | async) as loginstatus" class="nav-item" routerLinkActive="active"  >
+            <a mat-button  routerLink="/users/login" *ngIf="loginstatus">Log In</a>
+          
+          </li>
+          <li *ngIf="!(userlogin | async) as loginstatus" class="nav-item" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}">
+          <a mat-button routerLink="/users/registration" *ngIf="loginstatus">Register</a>
+          </li>
+          
+          <li class="nav-item dropdown" *ngIf="(userlogin | async) as loginstatus">
+            <button  [matMenuTriggerFor]="users" *ngIf="loginstatus"   mat-button>Users</button>
+            <mat-menu #users="matMenu">
+              <button mat-menu-item routerLink="/users/myaccount" *ngIf="loginstatus">My Account</button>
+              <button mat-menu-item (click)="logout()" *ngIf="loginstatus">Log Out</button>
+              
+            </mat-menu>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        
+        <div class="spacer"></div>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" name="search" [(ngModel)]="data" (keyup)="outSearchString()" (blur)="outSearchString()" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary"  type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  

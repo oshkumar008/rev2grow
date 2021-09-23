@@ -1,0 +1,29 @@
+.form_field {
+    display: block;
+  }
+
+.formWrapper{text-align: center; margin: 4% 0;}
+.loginForm{width: 500px; margin:0 auto; height: auto; background: #e6e6e6; padding: 20px 30px; overflow: hidden;}
+.frm-ctrl{border:1px solid #cccccc; border-radius: 4px; padding:4px 8px; height: 32px; outline: 0; text-align: left; font-size:14px; color: #7885b5; background: #fafbfc; margin-bottom: 10px; width: 100%;}
+.formGroup{width: 100%; float: left; padding: 35px; background: #ffffff;}
+.custom-btn {
+  font-family: Georgia, Times, Times New Roman, serif;
+  border: solid 1px #BA9B80;
+  margin: 6px 0 0;
+  text-decoration: none;
+  display: inline-block;
+  background: #BA9B80;
+  text-align: center;
+  border-radius: 25px;
+  color: #ffffff;
+  padding: 12px 55px;
+  margin-top: 40px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.custom-btn:hover{opacity: 0.7;}
+.or{margin: 10px 0;}
+.loginForm h5{font-size: 18px;}
+.SignUplink{padding-top:50px; clear: both;}
+.SignUplink a{text-decoration: none; color: #000000; font-size: 14px; font-weight: 500;}
+.forget{width: 100%; float:left; text-decoration: none; color:#000000; text-align: right;}
