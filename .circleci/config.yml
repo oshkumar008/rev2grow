@@ -24,7 +24,7 @@ jobs:
             -  run:
                 name: create app configuration
                 command: | 
-                    if [ "${CIRCLE_BRANCH}" == "uat" ]; then
+                    if [ "${CIRCLE_BRANCH}" == "stage" ]; then
                         echo "export const ENV = { BASE_API: 'https://tatras-ux-uat-api.metswift.live', WEATHER_API: 'https://tatras-ux-uat-weather.metswift.live/api/v1', JIRA_TOKEN: '"${JIRA_UAT_TOKEN}"'}; export const SETTINGS = {BUY: true, STATION: false, SEARCH_LOCATION_FULL_WIDTH_VALUE: 500};" > src/app/app.config.ts
                     fi
             - run: 
@@ -33,8 +33,8 @@ jobs:
             - run:
                 name: deploy
                 command: |
-                    if [ "${CIRCLE_BRANCH}" == "uat" ]; then
-                        scp -oStrictHostKeyChecking=no -r ./dist/metswift/* ${DEPLOY_UAT_USER}@${DEPLOY_UAT_SERVER}:${DEPLOY_UAT_DIR}
+                    if [ "${CIRCLE_BRANCH}" == "stage" ]; then
+                        scp -oStrictHostKeyChecking=no -r ./dist/rev2grow/* ${DEPLOY_STAGE_USER}@${DEPLOY_STAGE_SERVER}:${DEPLOY_STAGE_DIR}
                     fi 
 workflows:
     version: 2
@@ -44,5 +44,5 @@ workflows:
                 filters:
                     branches:
                         only:
-                            - uat
+                            - stage
         
